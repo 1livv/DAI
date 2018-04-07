@@ -78,7 +78,7 @@ public class UserController {
         }
 
         if (savedUser.isPresent() && savedUser.get().getPassword().equals(hashedPass)) {
-            return new ResponseEntity<>(new MyResponse().withMessage("OK"), HttpStatus.OK);
+            return new ResponseEntity<>(new MyResponse().withMessage("OK").withUser(savedUser.get()), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(new MyResponse().withMessage("The password and username do not match"),
                     HttpStatus.BAD_REQUEST);

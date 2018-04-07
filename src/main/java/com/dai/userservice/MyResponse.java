@@ -16,4 +16,6 @@ public class MyResponse {
     private String message;
 
     private List<Result> results;
+
+    private User user;
 }
