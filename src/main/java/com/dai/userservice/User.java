@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
@@ -11,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
-public class User {
+public class User implements Serializable {
 
     @NotBlank
     @Column(name = "user_name")
@@ -20,4 +21,7 @@ public class User {
 
     @NotBlank
     private String password;
+
+    @NotBlank
+    private String name;
 }
