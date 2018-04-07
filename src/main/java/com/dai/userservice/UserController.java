@@ -40,6 +40,7 @@ public class UserController {
         User newUser = new User();
         newUser.setUserName(user.getUserName());
         newUser.setName(user.getName());
+        newUser.setRole(user.getRole());
         try {
             newUser.setPassword(hashingService.digest(user.getPassword()));
         } catch (Exception e) {
@@ -86,6 +87,6 @@ public class UserController {
 
     private boolean checkUserFields(User user) {
         return !StringUtils.isEmpty(user.getPassword()) && !StringUtils.isEmpty(user.getUserName())
-                && !StringUtils.isEmpty(user.getName());
+                && !StringUtils.isEmpty(user.getName()) && user.getRole() != null;
     }
 }

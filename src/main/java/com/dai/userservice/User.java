@@ -24,4 +24,8 @@ public class User implements Serializable {
 
     @NotBlank
     private String name;
+
+    @NotBlank
+    private String role;
+
 }

@@ -50,7 +50,7 @@ public class ResultController {
     @GetMapping(value = "/results/fetch", consumes = "application/json")
     public ResponseEntity<MyResponse> getResult(@RequestParam(required = true) String name) {
         log.info("Request to get results for " + name);
-        
+
         if (StringUtils.isEmpty(name)) {
             return new ResponseEntity<>(new MyResponse().withMessage("Name is required"), HttpStatus.BAD_REQUEST);
         }
