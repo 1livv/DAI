@@ -10,7 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.sql.Date;
 
-@Entity
+@Entity(name = "appointments")
 @Table(name = "appointments")
 @NoArgsConstructor
 @AllArgsConstructor
