@@ -23,6 +23,7 @@ public class ResultController {
 
     private static final Logger log = LogManager.getLogger(ResultController.class);
 
+    @CrossOrigin(origins = "*")
     @PostMapping(value = "/results/create", consumes = "application/json")
     public ResponseEntity<MyResponse> addResult(@RequestBody AddResultReq req) {
 
@@ -47,6 +48,7 @@ public class ResultController {
         return new ResponseEntity<>(new MyResponse().withMessage("OK"), HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping(value = "/results/fetch", consumes = "application/json")
     public ResponseEntity<MyResponse> getResult(@RequestParam(required = true) String name) {
         log.info("Request to get results for " + name);

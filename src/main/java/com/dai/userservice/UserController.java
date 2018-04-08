@@ -23,6 +23,7 @@ public class UserController {
 
     private static final Logger log = LogManager.getLogger(UserController.class);
 
+    @CrossOrigin(origins = "*")
     @PostMapping(value = "/users/register", consumes = "application/json")
     public ResponseEntity<MyResponse> saveUser(@RequestBody User user, HttpServletRequest req
                                                ) {
@@ -56,6 +57,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/users/validate")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<MyResponse> findUser(@RequestBody User user, HttpServletRequest req, HttpServletResponse response) {
 
         log.info("Request to validate user " + user.getUserName());
