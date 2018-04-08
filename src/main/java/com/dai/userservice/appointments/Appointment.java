@@ -2,6 +2,7 @@ package com.dai.userservice.appointments;
 
 import com.dai.userservice.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import lombok.experimental.Wither;
 
@@ -38,6 +39,16 @@ public class Appointment {
     @JoinColumn(name = "patient", referencedColumnName = "name")
     @JsonIgnore
     private User patient;
+
+    @JsonProperty("patient")
+    private String getPatientName() {
+        return patient.getName();
+    }
+
+    @JsonProperty("doctor")
+    private String getDoctorName() {
+        return doctor.getName();
+    }
 
     @ManyToOne
     @JoinColumn(name = "doctor", referencedColumnName = "name")
