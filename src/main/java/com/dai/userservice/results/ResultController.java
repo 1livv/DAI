@@ -57,9 +57,8 @@ public class ResultController {
             return new ResponseEntity<>(new MyResponse().withMessage("Name is required"), HttpStatus.BAD_REQUEST);
         }
 
-        User user = new User();
-        user.setName(name);
-        return  new ResponseEntity<>(new MyResponse().withResults(resultRepository.findAllByUser(user)),
+
+        return  new ResponseEntity<>(new MyResponse().withResults(resultRepository.findAllByUser(name)),
                 HttpStatus.OK);
     }
 

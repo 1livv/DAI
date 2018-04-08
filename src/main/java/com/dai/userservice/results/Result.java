@@ -7,7 +7,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-@Entity
+@Entity(name = "results")
 @Table(name = "results")
 @AllArgsConstructor
 @NoArgsConstructor
