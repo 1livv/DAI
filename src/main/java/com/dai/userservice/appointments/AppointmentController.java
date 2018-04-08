@@ -64,7 +64,7 @@ public class AppointmentController {
         User user = new User();
         user.setName(name);
 
-        if (users.get(0).getRole().equals("medic")) {
+        if (users.get(0).getRole().equals("doctor")) {
             return new ResponseEntity<>(new MyResponse().withAppointments(appointmentRepository.findAllByDoctor(user)),
                     HttpStatus.OK);
         } else {

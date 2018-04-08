@@ -1,6 +1,5 @@
 package com.dai.userservice.appointments;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import lombok.*;
 import lombok.experimental.Wither;
 import org.springframework.util.StringUtils;
