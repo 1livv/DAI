@@ -10,7 +10,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.*;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
@@ -86,6 +88,29 @@ public class UserController {
                     HttpStatus.BAD_REQUEST);
         }
     }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/users/names")
+    public ResponseEntity<MyResponse> getNames( @RequestParam String role) {
+
+        if (StringUtils.isEmpty(role)) {
+            return new ResponseEntity<>(new MyResponse().withMessage("Role is required"), HttpStatus.BAD_REQUEST);
+        }
+
+        if (!role.equals("doctor") && !role.equals("patient")) {
+            return new ResponseEntity<>(new MyResponse().withMessage("Role must either doctor or patient"), HttpStatus.BAD_REQUEST);
+        }
+
+        List<User> users = userRepository.findAll();
+
+        List<String> names = users.stream()
+                .filter(x -> x.getRole().equals(role))
+                .map(User::getName)
+                .collect(Collectors.toList());
+
+        return new ResponseEntity<>(new MyResponse().withNames(names), HttpStatus.OK);
+    }
+
 
     private boolean checkUserFields(User user) {
         return !StringUtils.isEmpty(user.getPassword()) && !StringUtils.isEmpty(user.getUserName())

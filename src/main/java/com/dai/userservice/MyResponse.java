@@ -1,5 +1,6 @@
 package com.dai.userservice;
 
+import com.dai.userservice.appointments.Appointment;
 import com.dai.userservice.results.Result;
 import lombok.*;
 import lombok.experimental.Wither;
@@ -18,4 +19,8 @@ public class MyResponse {
     private List<Result> results;
 
     private User user;
+
+    private List<Appointment> appointments;
+
+    private List<String> names;
 }
